@@ -1,0 +1,14 @@
+<div class="floating-nav">
+  Name: <input type="text" [(ngModel)]="name"><br />
+
+  X: <input type="number" [(ngModel)]="x"> [{{netherX}}]<br />
+  Y: <input type="number" [(ngModel)]="y">[{{netherY}}]<br />
+
+  <select name="" id="" [(ngModel)]="selectedOwner">
+    @for(owner of owners; track owner.id) {
+      <option [ngValue]="owner">{{owner.name}}</option>
+    }
+  </select>
+
+  <button (click)="onSave()">Save</button>
+</div>
