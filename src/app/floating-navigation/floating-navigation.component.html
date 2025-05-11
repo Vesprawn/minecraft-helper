@@ -1,14 +1,30 @@
-<div class="floating-nav">
-  Name: <input type="text" [(ngModel)]="name"><br />
+<div class="floating-nav border rounded absolute bg-white p-4 w-80 top-4 left-4">
+  <div class="row mb-2">
+    Name: <input 
+      type="text" 
+      [(ngModel)]="name" 
+      placeholder="My Base"
+      class="border rounded p-1">
+    <br />
+  </div>
 
-  X: <input type="number" [(ngModel)]="x"> [{{netherX}}]<br />
-  Y: <input type="number" [(ngModel)]="y">[{{netherY}}]<br />
+  <div class="row mb-2">
+    X: <input 
+      type="number" 
+      [(ngModel)]="x" 
+      class="border rounded p-1"> [{{netherX}}]<br />
+  </div>
+  <div class="row mb-2">
+    Y: <input type="number" [(ngModel)]="y" class="border rounded p-1"> [{{netherY}}]<br />
+  </div>
 
-  <select name="" id="" [(ngModel)]="selectedOwner">
+  <div class="row mb-2">
+    Owner: <select name="" id="" [(ngModel)]="selectedOwner" class="border rounded p-1">
     @for(owner of owners; track owner.id) {
       <option [ngValue]="owner">{{owner.name}}</option>
     }
   </select>
+  </div>
 
-  <button (click)="onSave()">Save</button>
+  <button (click)="onSave()" class="font-bold float-right border-black border rounded bg-pink-500 py-.5 px-2 text-white cursor-pointer">Save</button>
 </div>

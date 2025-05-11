@@ -1,4 +1,4 @@
-<div class="map">
+<div class="map absolute top-0 left-0 height-100 width-100 bg-black">
   <canvas #canvas 
     [width]="width"
     [height]="height"
@@ -7,10 +7,4 @@
     (mousedown)="onMouseDown($event)"
     (wheel)="onMouseWheel($event)"
     ></canvas>
-
-  <!-- <div class="test">
-    @for(point of points; track point.id) {
-      <p>{{point.name}}</p>
-    }
-  </div> -->
 </div>

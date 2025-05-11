@@ -60,11 +60,15 @@ export class FloatingNavigationComponent {
   selectedOwner: Owner = this.owners[0];
 
   get netherX (): number {
-    return this.x * 8;
+    if (this.x === 0) return 0;
+
+    return this.x / 8;
   }
 
   get netherY (): number {
-    return this.y * 8;
+    if (this.y === 0) return 0;
+    
+    return this.y / 8;
   }
 
   onSave () {

@@ -120,7 +120,7 @@ export const locations: Location[] = [
     y: 200,
     name: 'Dungeon A',
     color: 'white',
-    textAnchor: 'bottom center'
+    textAnchor: 'left'
   },
   {
     id: 'test14',

@@ -119,11 +119,11 @@ export class MapComponent {
     if (!ctx) return;
 
     ctx.fillStyle = point.color;
-    ctx.strokeStyle = 'black';
+    ctx.strokeStyle = 'white';
     ctx.beginPath();
     ctx.arc(this.getX(point.x), this.getY(point.y), 10, 0, 2 * Math.PI);
     ctx.closePath();
-    ctx.lineWidth = 1;
+    ctx.lineWidth = 2;
     ctx.fill();
     ctx.stroke();
   }
