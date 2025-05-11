@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
-import { Location } from '../map/map.component';
+import { Location } from '../models/location.model';
 
 export interface Owner {
   id: string;
@@ -39,6 +39,11 @@ export class FloatingNavigationComponent {
       id: 'elliot',
       name: 'Elliot',
       color: 'green',
+    },
+    {
+      id: 'ellie',
+      name: 'Ellie',
+      color: 'blue',
     },
     {
       id: 'arthur',

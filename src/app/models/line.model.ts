@@ -11,6 +11,17 @@ export interface Line {
 export const lines: Line[] = [
   {
     a: {
+      x: -10,
+      y: -158,
+    },
+    b: {
+      x: 0,
+      y: -158,
+    },
+    name:'Ellie\'s Base - Y'
+  },
+  {
+    a: {
       x: 904,
       y: 104,
     },

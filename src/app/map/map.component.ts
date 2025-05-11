@@ -2,19 +2,11 @@ import { Component, ViewChild } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { Input } from '@angular/core';
 import { Line } from '../models/line.model';
+import { Location } from '../models/location.model';
 
 export interface Point {
   x: number,
   y: number,
-}
-
-export interface Location {
-  id: string,
-  x: number,
-  y: number,
-  color: string,
-  name: string,
-  textAnchor?: string
 }
 
 @Component({
@@ -62,6 +54,27 @@ export class MapComponent {
     return y * this.zoomLevel  + this.offset.y; 
   }
 
+  sortLocations (locations: Location[]) {
+    const zIndexLocations = locations.map((l: Location) => {
+      return {
+        ...l,
+        zIndex: (l.zIndex) ? l.zIndex : 0
+      }
+    })
+
+    return zIndexLocations.sort((a: Location, b: Location) => {
+      if (a.zIndex && b.zIndex) {
+        return a.zIndex - b.zIndex;
+      } else if (a.zIndex) {
+        return 1;
+      } else if (b.zIndex) {
+        return -1;
+      } else {
+        return 0;
+      }
+    })
+  }
+
   draw () {
     this.ctx?.clearRect(0, 0, this.width, this.height);
     this.drawAxis();
@@ -91,8 +104,10 @@ export class MapComponent {
 
   drawPoints () {
     if (!this.ctx) return;
+
+    const sortedLocations = this.sortLocations(this.points);
     
-    this.points.forEach(point => {
+    sortedLocations.forEach(point => {
       this.drawPoint(point);
       this.drawPointText(point);
     })
@@ -104,10 +119,13 @@ export class MapComponent {
     if (!ctx) return;
 
     ctx.fillStyle = point.color;
+    ctx.strokeStyle = 'black';
     ctx.beginPath();
     ctx.arc(this.getX(point.x), this.getY(point.y), 10, 0, 2 * Math.PI);
     ctx.closePath();
+    ctx.lineWidth = 1;
     ctx.fill();
+    ctx.stroke();
   }
 
   drawPointText (point: Location) {
